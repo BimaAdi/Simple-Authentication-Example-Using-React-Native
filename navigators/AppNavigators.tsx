@@ -3,10 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Keychain from 'react-native-keychain';
 import type { RootStackParamList } from '../types/navigation';
+import { DrawerNavigators } from './DrawerNavigators';
 import { useSignedInStore } from '../stores/SignInState';
-import { HomeScreen } from '../screens/HomeScreen';
 import { LoginScreen } from '../screens/LoginScreen';
-import { SecondScreen } from '../screens/SecondScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -35,12 +34,9 @@ export const AppNavigators = (): JSX.Element => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator  screenOptions={{headerShown: false}}>
         {isSignedIn ? (
-          <>
-            <Stack.Screen name='Home' component={HomeScreen} />
-            <Stack.Screen name='Second' component={SecondScreen} />
-          </>
+          <Stack.Screen name='HomeDrawer' component={DrawerNavigators} />
         ): (
           <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
         )}

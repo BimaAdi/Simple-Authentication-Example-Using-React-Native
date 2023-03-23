@@ -5,6 +5,7 @@
  * @format
  */
 
+import 'react-native-gesture-handler';
 import React from 'react';
 import { AppNavigators } from './navigators/AppNavigators';
 

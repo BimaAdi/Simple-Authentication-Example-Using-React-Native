@@ -6,9 +6,9 @@ import {
     Button,
 } from 'react-native';
 import { AppLayout } from '../components/AppLayout';
-import type { Props } from '../types/navigation';
+import type { DrawerProps } from '../types/navigation';
 
-export const SecondScreen = ({ navigation }: Props): JSX.Element => {
+export const SecondScreen = ({ navigation }: DrawerProps): JSX.Element => {
 
     return (
         <AppLayout>
