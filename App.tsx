@@ -13,6 +13,7 @@ import { HomeScreen } from './screens/HomeScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import type { RootStackParamList } from './types/navigation';
 import { useSignedInStore } from './stores/SignInState';
+import { SecondScreen } from './screens/SecondScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -37,14 +38,19 @@ function App(): JSX.Element {
       }
     }
     bootstrapAsync()
-    console.log(isSignedIn)
   }, [])
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
-        <Stack.Screen name='Home' component={HomeScreen} />
+        {isSignedIn ? (
+          <>
+            <Stack.Screen name='Home' component={HomeScreen} />
+            <Stack.Screen name='Second' component={SecondScreen} />
+          </>
+        ): (
+          <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );

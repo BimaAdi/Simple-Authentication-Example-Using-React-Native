@@ -8,12 +8,13 @@ import {
 import { AppLayout } from '../components/AppLayout';
 import type { Props } from '../types/navigation';
 
-export const HomeScreen = ({ navigation }: Props): JSX.Element => {
+export const SecondScreen = ({ navigation }: Props): JSX.Element => {
+
     return (
         <AppLayout>
             <View style={styles.mainView}>
-                <Text style={styles.textGreeting}>Home</Text>
-                <Button title='to Second' onPress={() => navigation.navigate("Second")}></Button>
+                <Text style={styles.textGreeting}>Second Screen</Text>
+                <Button title='to Home Screen' onPress={() => navigation.navigate("Home")}></Button>
             </View>
         </AppLayout>
     );
