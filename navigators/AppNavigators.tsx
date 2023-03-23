@@ -4,9 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Keychain from 'react-native-keychain';
 import type { RootStackParamList } from '../types/navigation';
 import { useSignedInStore } from '../stores/SignInState';
-import { HomeScreen } from '../screens/HomeScreen';
 import { LoginScreen } from '../screens/LoginScreen';
-import { SecondScreen } from '../screens/SecondScreen';
+import { TabNavigators } from './TabNavigators';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -35,12 +34,9 @@ export const AppNavigators = (): JSX.Element => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         {isSignedIn ? (
-          <>
-            <Stack.Screen name='Home' component={HomeScreen} />
-            <Stack.Screen name='Second' component={SecondScreen} />
-          </>
+          <Stack.Screen name='HomeTab' component={TabNavigators} />
         ): (
           <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
         )}

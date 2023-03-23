@@ -6,9 +6,9 @@ import {
     Button,
 } from 'react-native';
 import { AppLayout } from '../components/AppLayout';
-import type { Props } from '../types/navigation';
+import type { HomeTabProps } from '../types/navigation';
 
-export const HomeScreen = ({ navigation }: Props): JSX.Element => {
+export const HomeScreen = ({ navigation }: HomeTabProps): JSX.Element => {
     return (
         <AppLayout>
             <View style={styles.mainView}>
