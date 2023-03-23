@@ -4,24 +4,14 @@ import {
     View,
     Button,
 } from 'react-native';
-import * as Keychain from 'react-native-keychain';
-import { useSignedInStore } from '../stores/SignInState';
+import { useLogout } from '../hooks/auth';
 
 type Props = {
     children: string | JSX.Element | JSX.Element[]
 }
 
 export const AppLayout = ({ children }: Props) => {
-    const signedOut = useSignedInStore((state) => state.signedOut)
-
-    const logout = async () => {
-        try {
-            await Keychain.resetGenericPassword()
-            signedOut()
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    const { logout } = useLogout()
 
     return (
         <View style={styles.bodyView}>

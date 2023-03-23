@@ -4,8 +4,7 @@ import {
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
-import * as Keychain from 'react-native-keychain';
-import { useSignedInStore } from '../stores/SignInState';
+import { useLogout } from '../hooks/auth';
 import { HomeScreen } from '../screens/HomeScreen';
 import { SecondScreen } from '../screens/SecondScreen';
 import { DrawerParamList } from '../types/navigation';
@@ -13,17 +12,8 @@ import { DrawerParamList } from '../types/navigation';
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
 const CustomDrawerContent = (props: any) => {
-  const signedOut = useSignedInStore((state) => state.signedOut)
+  const { logout } = useLogout();
 
-  const logout = async () => {
-    try {
-      await Keychain.resetGenericPassword()
-      signedOut()
-    } catch (error) {
-      console.error(error)
-    }
-  }
-  
   return (
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />

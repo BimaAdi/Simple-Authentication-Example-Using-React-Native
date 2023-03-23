@@ -5,17 +5,10 @@ import {
     Text,
     Button,
 } from 'react-native';
-import * as Keychain from 'react-native-keychain';
-import { useSignedInStore } from '../stores/SignInState';
+import { useLogin } from '../hooks/auth';
 
 export const LoginScreen = (): JSX.Element => {
-    const signedIn = useSignedInStore((state) => state.signedIn)
-
-    const login = async () => {
-        await Keychain.setGenericPassword('user', 'password')
-        signedIn()
-    }
-
+    const { login } = useLogin()
     return (
         <View style={styles.mainView}>
             <Text style={styles.textGreeting}>Welcome Please Login</Text>
