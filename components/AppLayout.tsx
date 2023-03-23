@@ -8,10 +8,10 @@ import * as Keychain from 'react-native-keychain';
 import { useSignedInStore } from '../stores/SignInState';
 
 type Props = {
-    children: string | JSX.Element | JSX.Element[] 
-  }
+    children: string | JSX.Element | JSX.Element[]
+}
 
-export const AppLayout = ({children}:Props) => {
+export const AppLayout = ({ children }: Props) => {
     const signedOut = useSignedInStore((state) => state.signedOut)
 
     const logout = async () => {
@@ -24,14 +24,14 @@ export const AppLayout = ({children}:Props) => {
     }
 
     return (
-    <View style={styles.bodyView}>
-        <View style={styles.mainView}>
-            {children}
+        <View style={styles.bodyView}>
+            <View style={styles.mainView}>
+                {children}
+            </View>
+            <View style={styles.footer}>
+                <Button title='logout' onPress={() => logout()}></Button>
+            </View>
         </View>
-        <View style={styles.footer}>
-            <Button title='logout' onPress={() => logout()}></Button>
-        </View>
-    </View>
     )
 }
 
